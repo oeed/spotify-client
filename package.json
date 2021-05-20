@@ -5,11 +5,11 @@
   "description": "Lightweight, modern boilerplate built with electron, typescript, and react.",
   "main": "./dist/main.js",
   "scripts": {
-    "dev": "npm-run-all -p dev:react electron:serve",
+    "start": "npm-run-all -p dev:react electron:serve",
     "dev:electron": "cross-env NODE_ENV=development webpack --config webpack/electron.webpack.ts --mode=development && npm run start:electron",
     "dev:react": "cross-env NODE_ENV=development webpack-dev-server --config webpack/react.webpack.ts --mode=development",
     "electron:serve": "wait-on http-get://localhost:4000/ && npm run dev:electron",
-    "start:electron": "electron .",
+    "start:electron": "electron . --widevine-cdm-path=/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/90.0.4430.212/Libraries/WidevineCdm/_platform_specific/mac_x64/libwidevinecdm.dylib --widevine-cdm-version=4.10.2198.0",
     "build": "npm-run-all build:electron build:react",
     "build:run": "npm-run-all build start:electron",
     "build:electron": "webpack --config webpack/electron.webpack.ts --mode=production",
@@ -21,9 +21,6 @@
   "author": "HelloSoftware",
   "license": "MIT",
   "dependencies": {
-    "@emotion/react": "^11.1.5",
-    "@emotion/styled": "^11.3.0",
-    "@material-ui/core": "5.0.0-alpha.28",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
@@ -31,6 +28,7 @@
     "@types/node": "^14.14.41",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
+    "@types/spotify-web-playback-sdk": "^0.1.9",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "cross-env": "^7.0.3",

@@ -16,6 +16,10 @@ function createWindow() {
     },
   });
 
+  if (isDevelopment) {
+    mainWindow.webContents.openDevTools();
+  }
+
   if (process.env.NODE_ENV === "development") {
     mainWindow.loadURL("http://localhost:4000");
   } else {
