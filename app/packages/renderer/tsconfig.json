@@ -7,8 +7,9 @@
     "skipLibCheck": true,
     "strict": true,
     "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
     "jsx": "preserve",
-    "types": ["node"],
+    "types": ["node", "vite/client", "@emotion/react/types/css-prop"],
     "baseUrl": ".",
     "paths": {
       "#preload": ["../preload/src/index"],

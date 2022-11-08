@@ -14,7 +14,7 @@
     "build:preload": "cd ./packages/preload && vite build",
     "build:renderer": "cd ./packages/renderer && vite build",
     "compile": "cross-env MODE=production npm run build && electron-builder build --config .electron-builder.config.js --dir --config.asar=false",
-    "watch": "node scripts/watch.mjs",
+    "start": "node scripts/watch.mjs",
     "lint": "eslint . --ext js,mjs,cjs,ts,mts,cts,tsx",
     "typecheck:main": "tsc --noEmit -p packages/main/tsconfig.json",
     "typecheck:preload": "tsc --noEmit -p packages/preload/tsconfig.json",
@@ -24,9 +24,11 @@
     "format": "npx prettier --write \"**/*.{js,mjs,cjs,ts,mts,cts,tsx,json}\""
   },
   "devDependencies": {
+    "@emotion/babel-plugin": "11.10.5",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.8",
     "@typescript-eslint/eslint-plugin": "5.42.0",
+    "@vitejs/plugin-react": "2.2.0",
     "cross-env": "7.0.3",
     "electron": "21.2.2",
     "electron-builder": "23.6.0",

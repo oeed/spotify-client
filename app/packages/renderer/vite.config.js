@@ -3,6 +3,7 @@
 import { chrome } from "../../.electron-vendors.cache.json";
 import { join } from "path";
 import { renderer } from "unplugin-auto-expose";
+import react from "@vitejs/plugin-react";
 
 const PACKAGE_ROOT = __dirname;
 
@@ -39,6 +40,12 @@ const config = {
     environment: "happy-dom",
   },
   plugins: [
+    react({
+      jsxImportSource: "@emotion/react",
+      babel: {
+        plugins: ["@emotion/babel-plugin"],
+      },
+    }),
     renderer.vite({
       preloadEntry: join(PACKAGE_ROOT, "../preload/src/index.tsx"),
     }),
