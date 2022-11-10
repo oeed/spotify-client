@@ -9,21 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        List {
-            Text("Book List")
-        }
+        ArtistList()
+            .frame(minWidth: 200, maxWidth: .infinity, minHeight: 200, maxHeight: .infinity)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 NowPlaying()
                     .frame(minWidth: 500, maxWidth: 500, idealHeight: 32)
             }
         }
+//        TODO: is there a way to just flat remove the title?
         .navigationTitle("")
-        
-//        .presentedWindowToolbarStyle(.unified(showsTitle: false))
     }
-    
-    private func recordProgress() {}
 }
 
 struct ContentView_Previews: PreviewProvider {
