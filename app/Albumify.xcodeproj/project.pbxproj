@@ -40,19 +40,27 @@
 		20A720DD291C694A00EBED82 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				20A720E0291C6C5000EBED82 /* NowPlaying */,
+				20A7211D291C98AC00EBED82 /* Album List */,
+				20A720E0291C6C5000EBED82 /* Now Playing */,
 				20E76F5B291C691C00BCB184 /* ContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		20A720E0291C6C5000EBED82 /* NowPlaying */ = {
+		20A720E0291C6C5000EBED82 /* Now Playing */ = {
 			isa = PBXGroup;
 			children = (
 				20A720DE291C6C2800EBED82 /* NowPlaying.swift */,
 				20A720E1291C6C5D00EBED82 /* AlbumProgressIndicator.swift */,
 			);
-			path = NowPlaying;
+			path = "Now Playing";
+			sourceTree = "<group>";
+		};
+		20A7211D291C98AC00EBED82 /* Album List */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Album List";
 			sourceTree = "<group>";
 		};
 		20E76F4D291C691C00BCB184 = {
