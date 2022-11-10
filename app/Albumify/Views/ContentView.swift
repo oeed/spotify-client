@@ -12,10 +12,17 @@ struct ContentView: View {
         ArtistList()
             .frame(minWidth: 200, maxWidth: .infinity, minHeight: 200, maxHeight: .infinity)
         .toolbar {
-            ToolbarItem(placement: .principal) {
+            ToolbarItemGroup(placement: .principal) {
                 NowPlaying()
                     .frame(minWidth: 500, maxWidth: 500, idealHeight: 32)
+                Spacer()
+                Button {
+                    print("Edit button was tapped")
+                } label: {
+                    Image(systemName: "shuffle")
+                }
             }
+            
         }
 //        TODO: is there a way to just flat remove the title?
         .navigationTitle("")

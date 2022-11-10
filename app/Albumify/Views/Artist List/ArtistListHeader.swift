@@ -17,7 +17,12 @@ struct ArtistListHeader: View {
                 .font(.title)
                 .fontWeight(.bold)
             Spacer()
-            Image(systemName: "sun.max.fill")
+            Button {
+                print("Edit button was tapped")
+            } label: {
+                Image(systemName: "shuffle")
+            }
+            .buttonStyle(.borderless)
         }
         .padding(.horizontal)
         .padding(.vertical, 10)
