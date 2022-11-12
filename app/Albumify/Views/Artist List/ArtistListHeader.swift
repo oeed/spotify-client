@@ -16,6 +16,7 @@ struct ArtistListHeader: View {
             Text(name)
                 .font(.title)
                 .fontWeight(.bold)
+                .foregroundColor(.primary)
             Spacer()
             Button {
                 print("Edit button was tapped")

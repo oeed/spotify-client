@@ -8,8 +8,18 @@
 import SwiftUI
 
 struct AlbumView: View {
+    let image: Image
+    
+    init() {
+        self.init(image: Image("\(Int.random(in: 1...13))"))
+    }
+    
+    init(image: Image) {
+        self.image = image
+    }
+    
     var body: some View {
-        Image("magma")
+        self.image
             .resizable()
             .aspectRatio(contentMode: .fit)
             .clipShape(RoundedRectangle(cornerRadius: 4))
@@ -22,7 +32,7 @@ struct AlbumView: View {
 
 struct AlbumView_Previews: PreviewProvider {
     static var previews: some View {
-        AlbumView()
+        AlbumView(image: Image("7"))
             .frame(width: 160, height: 160)
     }
 }

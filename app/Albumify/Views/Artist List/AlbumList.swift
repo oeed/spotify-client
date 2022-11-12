@@ -17,7 +17,7 @@ struct AlbumList: View {
     
     var body: some View {
         LazyVGrid(columns: columns, spacing: 20) {
-            ForEach(1...count, id: \.self) { item in
+            ForEach(1...Int.random(in: 1...10), id: \.self) { item in
                 AlbumView()
             }
         }
