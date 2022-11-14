@@ -21,6 +21,7 @@ struct AlbumList: View {
                 AlbumView()
             }
         }
+        .padding(.top, 3)
         .padding([.leading, .bottom, .trailing])
     }
 }

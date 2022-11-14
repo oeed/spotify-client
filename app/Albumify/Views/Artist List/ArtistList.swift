@@ -14,12 +14,14 @@ struct ArtistList: View {
     
     var body: some View {
         ScrollView {
-            LazyVStack(spacing: 0, pinnedViews: [.sectionHeaders]) {
-                ForEach(1..<20) { index in
-                    Section(header:
-                        ArtistListHeader(name: "Artist \(index)", isPinned: index == pinned)
-                    ) {
-                        AlbumList(count: index)
+            ZStack {
+                LazyVStack(spacing: 0, pinnedViews: [.sectionHeaders]) {
+                    ForEach(1..<20) { index in
+                        Section(header:
+                                    ArtistListHeader(name: "Artist \(index)", isPinned: index == pinned)
+                        ) {
+                            AlbumList(count: index)
+                        }
                     }
                 }
             }
