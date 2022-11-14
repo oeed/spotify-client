@@ -181,6 +181,7 @@ $RECYCLE.BIN/
 #Added by cargo
 
 playback/target
+playback-node/target
 Cargo.lock
 
 .pnp.*
