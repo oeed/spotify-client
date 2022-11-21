@@ -1,7 +1,0 @@
-[package]
-edition = "2021"
-name = "playback"
-version = "0.1.0"
-
-[dependencies]
-librespot = "0.4"

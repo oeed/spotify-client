@@ -1,6 +1,6 @@
 [package]
 edition = "2021"
-name = "spotify-playback-node"
+name = "spotify-node"
 version = "0.0.0"
 
 [lib]
@@ -10,7 +10,7 @@ crate-type = ["cdylib"]
 # Default enable napi4 feature, see https://nodejs.org/api/n-api.html#node-api-version-matrix
 napi = {version = "2.10.0", default-features = false, features = ["napi4"]}
 napi-derive = "2.9.1"
-spotify-playback = "../playback"
+spotify = "../spotify"
 
 [build-dependencies]
 napi-build = "2.0.1"

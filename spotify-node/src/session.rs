@@ -5,7 +5,7 @@ use librespot::{
     session::Session,
     spotify_id::SpotifyId,
   },
-  playback::{
+  spotify::{
     audio_backend,
     config::{AudioFormat, PlayerConfig},
     mixer::NoOpVolume,

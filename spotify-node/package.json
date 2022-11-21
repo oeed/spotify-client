@@ -1,10 +1,10 @@
 {
-  "name": "spotify-playback",
+  "name": "spotify",
   "version": "0.0.0",
   "main": "index.js",
   "types": "index.d.ts",
   "napi": {
-    "name": "spotify-playback",
+    "name": "spotify",
     "triples": {
       "defaults": false,
       "additional": [

@@ -1,5 +1,5 @@
 {
-  "name": "spotify-playback-darwin-arm64",
+  "name": "spotify-darwin-arm64",
   "version": "0.0.0",
   "os": [
     "darwin"
@@ -7,9 +7,9 @@
   "cpu": [
     "arm64"
   ],
-  "main": "spotify-playback.darwin-arm64.node",
+  "main": "spotify.darwin-arm64.node",
   "files": [
-    "spotify-playback.darwin-arm64.node"
+    "spotify.darwin-arm64.node"
   ],
   "license": "MIT",
   "engines": {
