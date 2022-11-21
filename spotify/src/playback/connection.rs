@@ -1,6 +1,5 @@
 use librespot::{
   connect::{config::ConnectConfig, spirc::Spirc},
-  core::{authentication::Credentials, config::SessionConfig, session::Session},
   playback::{
     audio_backend,
     config::{AudioFormat, PlayerConfig},
@@ -10,35 +9,33 @@ use librespot::{
 };
 use std::{future::Future, pin::Pin};
 
-use crate::Playback;
+use crate::{session::Session, Playback};
 
-impl Playback {
-  pub async fn connect(username: &str, password: &str) -> (Self, Connection<impl Future<Output = ()>>) {
-    let session_config = SessionConfig::default();
+impl<'a> Playback<'a> {
+  pub async fn connect(session: &'a Session) -> (Playback<'a>, Connection<impl Future<Output = ()>>) {
     let player_config = PlayerConfig::default();
     let audio_format = AudioFormat::default();
     let connect_config = ConnectConfig::default();
-
-    let credentials = Credentials::with_password(username, password);
-
     let backend = audio_backend::find(None).unwrap();
-    let session = Session::new(dbg!(session_config), None);
 
-    let player = Player::new(player_config, session.clone(), Box::new(NoOpVolume), move || {
-      backend(None, audio_format)
-    });
+    let player = Player::new(
+      player_config,
+      session.session.clone(),
+      Box::new(NoOpVolume),
+      move || backend(None, audio_format),
+    );
 
     let (spirc, spirc_task) = Spirc::new(
       connect_config,
-      session,
-      credentials,
+      session.session.clone(),
+      session.credentials.clone(),
       player,
       Box::new(SoftMixer::open(MixerConfig::default())),
     )
     .await
     .unwrap();
 
-    (Playback { spirc }, Connection::new(spirc_task))
+    (Playback { spirc, session }, Connection::new(spirc_task))
   }
 }
 

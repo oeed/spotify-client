@@ -1,10 +1,12 @@
-use spotify::Playback;
+use spotify::{Playback, Session};
 
 #[tokio::main]
 async fn main() {
-  let (playback, connection) = Playback::connect("1241876757", "testpassword").await;
+  let session = Session::new("1241876757", "testpassword");
+  let (playback, connection) = Playback::connect(&session).await;
   playback
-    .play_context(String::from("spotify:album:7FkJxlcljM6Ix0pC2JSNOE"))
+    .play_context(String::from("spotify:album:79dL7FLiJFOO0EoehUHQBv"))
+    .await
     .unwrap();
 
   connection.run().await;

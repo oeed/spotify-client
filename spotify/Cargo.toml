@@ -5,4 +5,6 @@ version = "0.1.0"
 
 [dependencies]
 librespot = {git = "https://github.com/oeed/librespot", branch = "spirc-load-command"}
+serde = "1"
+serde_json = "1"
 tokio = "1"
