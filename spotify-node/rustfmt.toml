@@ -1,7 +1,0 @@
-blank_lines_upper_bound = 2
-control_brace_style = "ClosingNextLine"
-edition = "2021"
-group_imports = "StdExternalCrate"
-max_width = 120
-merge_imports = true
-tab_spaces = 2
