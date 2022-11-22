@@ -180,8 +180,7 @@ $RECYCLE.BIN/
 
 #Added by cargo
 
-playback/target
-playback-node/target
+spotify/target
 Cargo.lock
 
 .pnp.*
@@ -202,3 +201,4 @@ xcuserdata/
 *.xccheckout
 
 .vscode
+app/Generated

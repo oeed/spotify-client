@@ -31,6 +31,19 @@ struct AlbumView: View {
             }
             .scaleEffect(isPressing ? 0.98 : isHovering ? 1.02 : 1)
             .animation(.easeInOut(duration: 0.08), value: [isHovering, isPressing])
+            .onTapGesture {
+                print("tap!")
+                let group = DispatchGroup()
+                group.enter()
+                    Task{
+                        let session = Session("1241876757", "testpassword");
+//                        let playback = session.playback();
+//                        await playback
+//                            .play_album_ffi("79dL7FLiJFOO0EoehUHQBv")
+
+                        group.leave()
+                    }
+            }
             .onHover { over in
                 isHovering = over
             }
@@ -43,6 +56,7 @@ struct AlbumView: View {
                         self.isPressing = false
                     })
             )
+        
     }
 }
 

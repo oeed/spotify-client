@@ -59,12 +59,12 @@ impl<T: Future<Output = ()> + Send + 'static> Connection<T> {
   }
 
   pub async fn run(self) -> ! {
-    self.0.await;
+    let () = &mut self.0.await;
     // TODO: retry logic
     panic!("Spirc shut down unexpectedly");
   }
 
   pub fn run_in_background(self) {
-    tokio::spawn(async move { self.run() });
+    // tokio::spawn(async move { self.run() });
   }
 }

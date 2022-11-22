@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		207E4DD8292C636B007D21C1 /* spotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207E4DD4292C636B007D21C1 /* spotify.swift */; };
+		207E4DD9292C636B007D21C1 /* SwiftBridgeCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207E4DD7292C636B007D21C1 /* SwiftBridgeCore.swift */; };
 		20A720DF291C6C2800EBED82 /* NowPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A720DE291C6C2800EBED82 /* NowPlaying.swift */; };
 		20A720E2291C6C5D00EBED82 /* AlbumProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A720E1291C6C5D00EBED82 /* AlbumProgressIndicator.swift */; };
 		20A72121291C98E200EBED82 /* ArtistList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A72120291C98E200EBED82 /* ArtistList.swift */; };
@@ -15,6 +17,10 @@
 		20A7215B291CC82F00EBED82 /* ArtistListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A7215A291CC82F00EBED82 /* ArtistListSection.swift */; };
 		20A7215D291CCA4C00EBED82 /* AlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A7215C291CCA4C00EBED82 /* AlbumView.swift */; };
 		20A7215F291CEC0500EBED82 /* AlbumButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A7215E291CEC0500EBED82 /* AlbumButton.swift */; };
+		20C9AC26292C6B7D004A175A /* libspotify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20C9AC25292C6B66004A175A /* libspotify.a */; };
+		20C9AC28292C6D93004A175A /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20C9AC27292C6D93004A175A /* CoreAudio.framework */; };
+		20C9AC2A292C6DB0004A175A /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20C9AC29292C6DB0004A175A /* AudioUnit.framework */; };
+		20C9AC2C292C6DB4004A175A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20C9AC2B292C6DB4004A175A /* AudioToolbox.framework */; };
 		20D5C33B292040A700CD1630 /* Controls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D5C33A292040A700CD1630 /* Controls.swift */; };
 		20E76F5A291C691C00BCB184 /* AlbumifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E76F59291C691C00BCB184 /* AlbumifyApp.swift */; };
 		20E76F5C291C691C00BCB184 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E76F5B291C691C00BCB184 /* ContentView.swift */; };
@@ -23,6 +29,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		207E4DCA292C55A9007D21C1 /* build-rust.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "build-rust.sh"; sourceTree = "<group>"; };
+		207E4DCC292C5688007D21C1 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		207E4DCE292C621A007D21C1 /* libspotify.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libspotify.a; path = ../target/universal/debug/libspotify.a; sourceTree = "<group>"; };
+		207E4DD4292C636B007D21C1 /* spotify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = spotify.swift; sourceTree = "<group>"; };
+		207E4DD5292C636B007D21C1 /* spotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spotify.h; sourceTree = "<group>"; };
+		207E4DD6292C636B007D21C1 /* SwiftBridgeCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftBridgeCore.h; sourceTree = "<group>"; };
+		207E4DD7292C636B007D21C1 /* SwiftBridgeCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftBridgeCore.swift; sourceTree = "<group>"; };
 		20A720DE291C6C2800EBED82 /* NowPlaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlaying.swift; sourceTree = "<group>"; };
 		20A720E1291C6C5D00EBED82 /* AlbumProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumProgressIndicator.swift; sourceTree = "<group>"; };
 		20A72120291C98E200EBED82 /* ArtistList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistList.swift; sourceTree = "<group>"; };
@@ -31,6 +44,10 @@
 		20A7215A291CC82F00EBED82 /* ArtistListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistListSection.swift; sourceTree = "<group>"; };
 		20A7215C291CCA4C00EBED82 /* AlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumView.swift; sourceTree = "<group>"; };
 		20A7215E291CEC0500EBED82 /* AlbumButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumButton.swift; sourceTree = "<group>"; };
+		20C9AC25292C6B66004A175A /* libspotify.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libspotify.a; path = ../spotify/target/universal/debug/libspotify.a; sourceTree = "<group>"; };
+		20C9AC27292C6D93004A175A /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		20C9AC29292C6DB0004A175A /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		20C9AC2B292C6DB4004A175A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		20D5C33A292040A700CD1630 /* Controls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controls.swift; sourceTree = "<group>"; };
 		20E76F56291C691C00BCB184 /* Albumify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Albumify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20E76F59291C691C00BCB184 /* AlbumifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumifyApp.swift; sourceTree = "<group>"; };
@@ -45,12 +62,47 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20C9AC28292C6D93004A175A /* CoreAudio.framework in Frameworks */,
+				20C9AC26292C6B7D004A175A /* libspotify.a in Frameworks */,
+				20C9AC2A292C6DB0004A175A /* AudioUnit.framework in Frameworks */,
+				20C9AC2C292C6DB4004A175A /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		207E4DCD292C621A007D21C1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				20C9AC2B292C6DB4004A175A /* AudioToolbox.framework */,
+				20C9AC29292C6DB0004A175A /* AudioUnit.framework */,
+				20C9AC27292C6D93004A175A /* CoreAudio.framework */,
+				20C9AC25292C6B66004A175A /* libspotify.a */,
+				207E4DCE292C621A007D21C1 /* libspotify.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		207E4DD2292C636B007D21C1 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				207E4DD3292C636B007D21C1 /* spotify */,
+				207E4DD6292C636B007D21C1 /* SwiftBridgeCore.h */,
+				207E4DD7292C636B007D21C1 /* SwiftBridgeCore.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		207E4DD3292C636B007D21C1 /* spotify */ = {
+			isa = PBXGroup;
+			children = (
+				207E4DD4292C636B007D21C1 /* spotify.swift */,
+				207E4DD5292C636B007D21C1 /* spotify.h */,
+			);
+			path = spotify;
+			sourceTree = "<group>";
+		};
 		20A720DD291C694A00EBED82 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -87,8 +139,12 @@
 		20E76F4D291C691C00BCB184 = {
 			isa = PBXGroup;
 			children = (
+				207E4DD2292C636B007D21C1 /* Generated */,
+				207E4DCC292C5688007D21C1 /* BridgingHeader.h */,
+				207E4DCA292C55A9007D21C1 /* build-rust.sh */,
 				20E76F58291C691C00BCB184 /* Albumify */,
 				20E76F57291C691C00BCB184 /* Products */,
+				207E4DCD292C621A007D21C1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,6 +183,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 20E76F65291C691D00BCB184 /* Build configuration list for PBXNativeTarget "Albumify" */;
 			buildPhases = (
+				207E4DCB292C562E007D21C1 /* ShellScript */,
 				20E76F52291C691C00BCB184 /* Sources */,
 				20E76F53291C691C00BCB184 /* Frameworks */,
 				20E76F54291C691C00BCB184 /* Resources */,
@@ -185,6 +242,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		207E4DCB292C562E007D21C1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n./build-rust.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		20E76F52291C691C00BCB184 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -192,6 +269,7 @@
 			files = (
 				20A72121291C98E200EBED82 /* ArtistList.swift in Sources */,
 				20E76F5C291C691C00BCB184 /* ContentView.swift in Sources */,
+				207E4DD8292C636B007D21C1 /* spotify.swift in Sources */,
 				20A7215B291CC82F00EBED82 /* ArtistListSection.swift in Sources */,
 				20A7215F291CEC0500EBED82 /* AlbumButton.swift in Sources */,
 				20A7215D291CCA4C00EBED82 /* AlbumView.swift in Sources */,
@@ -199,6 +277,7 @@
 				20D5C33B292040A700CD1630 /* Controls.swift in Sources */,
 				20A72123291C9C1200EBED82 /* AlbumList.swift in Sources */,
 				20A72125291CA3C500EBED82 /* ArtistListHeader.swift in Sources */,
+				207E4DD9292C636B007D21C1 /* SwiftBridgeCore.swift in Sources */,
 				20A720E2291C6C5D00EBED82 /* AlbumProgressIndicator.swift in Sources */,
 				20A720DF291C6C2800EBED82 /* NowPlaying.swift in Sources */,
 			);
@@ -323,6 +402,7 @@
 		20E76F66291C691D00BCB184 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Albumify/Albumify.entitlements;
@@ -337,10 +417,12 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../spotify/target/universal/debug";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.olivercooper.Albumify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/BridgingHeader.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -348,6 +430,7 @@
 		20E76F67291C691D00BCB184 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Albumify/Albumify.entitlements;
@@ -362,10 +445,12 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../spotify/target/universal/release";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.olivercooper.Albumify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/BridgingHeader.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
