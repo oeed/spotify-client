@@ -11,8 +11,8 @@ use std::{future::Future, pin::Pin};
 
 use crate::{session::Session, Playback};
 
-impl<'a> Playback<'a> {
-  pub async fn connect(session: &'a Session) -> (Playback<'a>, Connection<impl Future<Output = ()>>) {
+impl Playback {
+  pub async fn connect(session: &Session) -> (Playback, Connection<impl Future<Output = ()>>) {
     let player_config = PlayerConfig::default();
     let audio_format = AudioFormat::default();
     let connect_config = ConnectConfig::default();
@@ -35,7 +35,19 @@ impl<'a> Playback<'a> {
     .await
     .unwrap();
 
-    (Playback { spirc, session }, Connection::new(spirc_task))
+    (
+      Playback {
+        spirc,
+        session: session.session.clone(),
+      },
+      Connection::new(spirc_task),
+    )
+  }
+}
+
+impl Drop for Playback {
+  fn drop(&mut self) {
+    self.spirc.disconnect().ok();
   }
 }
 
@@ -46,15 +58,10 @@ impl<T: Future<Output = ()> + Send + 'static> Connection<T> {
     Connection(Box::pin(spirc_task))
   }
 
-  pub async fn run(mut self) -> ! {
-    loop {
-      tokio::select! {
-          _ = &mut self.0 => {
-            // TODO: retry logic
-            panic!("Spirc shut down unexpectedly");
-          },
-      }
-    }
+  pub async fn run(self) -> ! {
+    self.0.await;
+    // TODO: retry logic
+    panic!("Spirc shut down unexpectedly");
   }
 
   pub fn run_in_background(self) {

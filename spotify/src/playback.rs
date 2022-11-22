@@ -5,18 +5,18 @@ use librespot::{
   protocol::spirc::TrackRef,
 };
 
-use crate::session::Session;
+use crate::session::LibrespotSession;
 
 pub mod connection;
 
-pub struct Playback<'a> {
+pub struct Playback {
   pub spirc: Spirc,
-  session: &'a Session,
+  session: LibrespotSession,
 }
 
-impl Playback<'_> {
-  pub async fn play_context(&self, context_uri: String) -> Result<(), librespot::core::Error> {
-    let album = Album::get(&self.session.session, &SpotifyId::from_uri(&context_uri)?).await?;
+impl Playback {
+  pub async fn play_album(&self, album_id: &str) -> Result<(), librespot::core::Error> {
+    let album = Album::get(&self.session, &SpotifyId::from_base62(album_id)?).await?;
     let tracks = album
       .tracks()
       .map(|track_id| {
@@ -28,7 +28,7 @@ impl Playback<'_> {
 
     self.spirc.activate()?;
     self.spirc.load(SpircLoadCommand {
-      context_uri,
+      context_uri: format!("spotify:album:{}", album_id),
       start_playing: true,
       shuffle: false,
       repeat: false,
