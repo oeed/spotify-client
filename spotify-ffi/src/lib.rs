@@ -3,6 +3,8 @@
 
 use crate::session::Session;
 
+mod actor;
+mod command;
 mod session;
 
 #[swift_bridge::bridge]
@@ -14,6 +16,6 @@ mod ffi {
     fn new(username: String, password: String) -> Session;
 
     #[swift_bridge(rust_name = "play_album")]
-    fn playAlbum(&mut self, album_id: String);
+    async fn playAlbum(&mut self, album_id: String);
   }
 }
