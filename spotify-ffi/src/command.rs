@@ -1,36 +1,24 @@
-use crate::actor::{Actor, Spotify};
-
-pub use self::play_album::PlayAlbum;
+use self::pause::Pause;
+use self::play_album::PlayAlbum;
+use crate::actor::Spotify;
 use async_trait::async_trait;
-use tokio::sync::oneshot;
+use enum_dispatch::enum_dispatch;
+use std::fmt::Debug;
 
+mod pause;
 mod play_album;
 
+#[enum_dispatch]
+#[derive(Debug)]
 pub enum Commands {
-  PlayAlbum(CommandResponder<PlayAlbum>),
+  PlayAlbum(PlayAlbum),
+  Pause(Pause),
 }
 
-pub struct CommandResponder<T: Command> {
-  pub command: T,
-  pub respond_to: oneshot::Sender<T::Response>,
-}
-
-impl<T: Command> CommandResponder<T> {
-  pub fn new(command: T) -> (Self, oneshot::Receiver<T::Response>) {
-    let (send, recv) = oneshot::channel();
-    (
-      CommandResponder {
-        command,
-        respond_to: send,
-      },
-      recv,
-    )
-  }
-}
-
+/// Commands are 'fire and forget' tasks the actor executes, but cares not of their response or when they finish.
+/// As such, they can be called (in Swift) synchronously.
 #[async_trait]
-pub trait Command {
-  type Response;
-
-  async fn execute(&self, spotify: &Spotify) -> Self::Response;
+#[enum_dispatch(Commands)]
+pub trait Command: Send + Debug {
+  async fn execute(self, spotify: &Spotify);
 }

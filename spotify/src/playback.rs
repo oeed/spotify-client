@@ -5,7 +5,7 @@ use librespot::{
   protocol::spirc::TrackRef,
 };
 
-use crate::session::LibrespotSession;
+use crate::{session::LibrespotSession, LibrespotResult};
 
 pub mod connection;
 
@@ -15,7 +15,7 @@ pub struct Playback {
 }
 
 impl Playback {
-  pub async fn play_album(&self, album_uri: &str) -> Result<(), librespot::core::Error> {
+  pub async fn play_album(&self, album_uri: &str) -> LibrespotResult<()> {
     let id = SpotifyId::from_uri(album_uri)?;
     let album = Album::get(&self.session, &id).await?;
     let tracks = album
@@ -39,5 +39,9 @@ impl Playback {
     })?;
 
     Ok(())
+  }
+
+  pub fn pause(&self) -> LibrespotResult<()> {
+    self.spirc.pause()
   }
 }

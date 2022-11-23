@@ -4,6 +4,7 @@ use futures::Future;
 use tokio::{select, sync::mpsc::UnboundedReceiver};
 
 use crate::command::{Command, Commands};
+use crate::request::{RequestResponderWrap, Requests};
 
 pub struct Spotify {
   pub _session: spotify::Session,
@@ -13,20 +14,23 @@ pub struct Spotify {
 pub struct Actor<T> {
   spotify: Spotify,
   connection: Pin<Box<T>>,
-  receiver: UnboundedReceiver<Commands>,
+  request_receiver: UnboundedReceiver<Requests>,
+  command_receiver: UnboundedReceiver<Commands>,
 }
 
 impl Actor<()> {
   pub async fn new(
     username: &str,
     password: &str,
-    receiver: UnboundedReceiver<Commands>,
+    request_receiver: UnboundedReceiver<Requests>,
+    command_receiver: UnboundedReceiver<Commands>,
   ) -> Actor<impl Future<Output = ()> + Send> {
     let session = spotify::Session::new(&username, &password);
     let (playback, connection) = spotify::Playback::connect(&session).await;
 
     Actor {
-      receiver,
+      request_receiver,
+      command_receiver,
       connection: Box::pin(connection),
       spotify: Spotify {
         _session: session,
@@ -41,7 +45,8 @@ impl<T: Future<Output = ()> + Send> Actor<T> {
     let Actor {
       spotify,
       mut connection,
-      mut receiver,
+      mut request_receiver,
+      mut command_receiver,
       ..
     } = self;
 
@@ -49,15 +54,15 @@ impl<T: Future<Output = ()> + Send> Actor<T> {
       select! {
         () = &mut connection => {},
 
-        command = receiver.recv() => {
+        request = request_receiver.recv() => {
+          if let Some(request) = request {
+            request.request_send(&spotify).await;
+          }
+        },
+
+        command = command_receiver.recv() => {
           if let Some(command) = command {
-            match command {
-              Commands::PlayAlbum(responder) => {
-                let response = responder.command.execute(&spotify).await;
-                // we can ignore any errors while sending: https://ryhl.io/blog/actors-with-tokio/
-                let _ = responder.respond_to.send(response);
-              }
-            }
+            command.execute(&spotify).await;
           }
         },
       }

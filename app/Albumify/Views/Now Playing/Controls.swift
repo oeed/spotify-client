@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Controls: View {
+    @EnvironmentObject var spotify: Spotify
+    
     var body: some View {
         HStack(alignment: .center, spacing: 0) {
             ControlButton(
@@ -19,7 +21,9 @@ struct Controls: View {
             ControlButton(
                 imageName: "play.fill",
                 isPrimary: true,
-                action: {}
+                action: {
+                    spotify.session?.pause()
+                }
             )
             
             ControlButton(
