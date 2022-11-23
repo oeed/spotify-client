@@ -15,8 +15,9 @@ pub struct Playback {
 }
 
 impl Playback {
-  pub async fn play_album(&self, album_id: &str) -> Result<(), librespot::core::Error> {
-    let album = Album::get(&self.session, &SpotifyId::from_base62(album_id)?).await?;
+  pub async fn play_album(&self, album_uri: &str) -> Result<(), librespot::core::Error> {
+    let id = SpotifyId::from_uri(album_uri)?;
+    let album = Album::get(&self.session, &id).await?;
     let tracks = album
       .tracks()
       .map(|track_id| {
@@ -27,8 +28,9 @@ impl Playback {
       .collect();
 
     self.spirc.activate()?;
+
     self.spirc.load(SpircLoadCommand {
-      context_uri: format!("spotify:album:{}", album_id),
+      context_uri: format!("{}", album_uri),
       start_playing: true,
       shuffle: false,
       repeat: false,

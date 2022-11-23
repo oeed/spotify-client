@@ -1,0 +1,25 @@
+[package]
+edition = "2021"
+name = "spotify-ffi"
+version = "0.1.0"
+
+build = "build.rs"
+
+[build-dependencies]
+swift-bridge-build = "0.1"
+
+[lib]
+crate-type = ["staticlib"]
+
+[dependencies]
+futures = "0.3"
+simple_logger = "4.0.0"
+spotify = {path = "../spotify"}
+swift-bridge = {version = "0.1", features = ["async"]}
+tokio = {version = "1", features = ["full"]}
+
+hyper = {version = "0.14", features = ["client", "http1", "http2", "tcp"]}
+hyper-proxy = {version = "0.9", default-features = false, features = ["rustls"]}
+hyper-rustls = {version = "0.23", features = ["http2"]}
+log = "0.4"
+reqwest = {version = "0.11", features = ["json"]}

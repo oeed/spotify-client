@@ -11,6 +11,7 @@ struct AlbumView: View {
     let image: Image
     @State private var isHovering: Bool = false
     @State private var isPressing: Bool = false
+    @EnvironmentObject var spotify: Spotify
     
     init() {
         self.init(image: Image("\(Int.random(in: 1...13))"))
@@ -32,17 +33,8 @@ struct AlbumView: View {
             .scaleEffect(isPressing ? 0.98 : isHovering ? 1.02 : 1)
             .animation(.easeInOut(duration: 0.08), value: [isHovering, isPressing])
             .onTapGesture {
-                print("tap!")
-                let group = DispatchGroup()
-                group.enter()
-                    Task{
-                        let session = Session("1241876757", "testpassword");
-//                        let playback = session.playback();
-//                        await playback
-//                            .play_album_ffi("79dL7FLiJFOO0EoehUHQBv")
-
-                        group.leave()
-                    }
+                spotify.session?
+                   .playAlbum("spotify:album:79dL7FLiJFOO0EoehUHQBv")
             }
             .onHover { over in
                 isHovering = over

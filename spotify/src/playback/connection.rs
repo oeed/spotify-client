@@ -1,5 +1,6 @@
 use librespot::{
   connect::{config::ConnectConfig, spirc::Spirc},
+  core::config::DeviceType,
   playback::{
     audio_backend,
     config::{AudioFormat, PlayerConfig},
@@ -7,15 +8,20 @@ use librespot::{
     player::Player,
   },
 };
-use std::{future::Future, pin::Pin};
+use std::future::Future;
 
 use crate::{session::Session, Playback};
 
 impl Playback {
-  pub async fn connect(session: &Session) -> (Playback, Connection<impl Future<Output = ()>>) {
+  pub async fn connect(session: &Session) -> (Playback, impl Future<Output = ()>) {
     let player_config = PlayerConfig::default();
     let audio_format = AudioFormat::default();
-    let connect_config = ConnectConfig::default();
+    let connect_config = ConnectConfig {
+      name: String::from("Albumify"),
+      device_type: DeviceType::Computer,
+      initial_volume: Some(50),
+      has_volume_ctrl: false, // TODO: volume control
+    };
     let backend = audio_backend::find(None).unwrap();
 
     let player = Player::new(
@@ -40,7 +46,7 @@ impl Playback {
         spirc,
         session: session.session.clone(),
       },
-      Connection::new(spirc_task),
+      spirc_task,
     )
   }
 }
@@ -48,23 +54,5 @@ impl Playback {
 impl Drop for Playback {
   fn drop(&mut self) {
     self.spirc.disconnect().ok();
-  }
-}
-
-pub struct Connection<T: Future<Output = ()> + Send + 'static>(Pin<Box<T>>);
-
-impl<T: Future<Output = ()> + Send + 'static> Connection<T> {
-  fn new(spirc_task: T) -> Self {
-    Connection(Box::pin(spirc_task))
-  }
-
-  pub async fn run(self) -> ! {
-    let () = &mut self.0.await;
-    // TODO: retry logic
-    panic!("Spirc shut down unexpectedly");
-  }
-
-  pub fn run_in_background(self) {
-    // tokio::spawn(async move { self.run() });
   }
 }

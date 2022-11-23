@@ -9,6 +9,6 @@
 #define BridgingHeader_h
 
 #include "Generated/SwiftBridgeCore.h"
-#include "Generated/spotify/spotify.h"
+#include "Generated/spotify-ffi/spotify-ffi.h"
 
 #endif /* BridgingHeader_h */
