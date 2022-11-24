@@ -25,7 +25,7 @@ impl Session {
   pub fn new(username: String, password: String) -> Session {
     SimpleLogger::new()
       .with_level(log::Level::Info.to_level_filter())
-      .with_module_level("spotify_ffi", log::Level::Debug.to_level_filter())
+      .with_module_level("spotify", log::Level::Debug.to_level_filter())
       .init()
       .unwrap();
 

@@ -181,7 +181,6 @@ $RECYCLE.BIN/
 #Added by cargo
 
 spotify/target
-spotify-ffi/target
 Cargo.lock
 
 .pnp.*

@@ -29,11 +29,11 @@ fi
   if [[ $CONFIGURATION == "Release" ]]; then
       echo "BUIlDING FOR RELEASE"
       
-      cargo lipo --release --manifest-path ../spotify-ffi/Cargo.toml --targets aarch64-apple-darwin #,x86_64-apple-darwin
+      cargo lipo --release --manifest-path ../spotify/Cargo.toml --targets aarch64-apple-darwin #,x86_64-apple-darwin
   else
       echo "BUIlDING FOR DEBUG"
 
-      cargo lipo --manifest-path ../spotify-ffi/Cargo.toml --targets aarch64-apple-darwin #,x86_64-apple-darwin
+      cargo lipo --manifest-path ../spotify/Cargo.toml --targets aarch64-apple-darwin #,x86_64-apple-darwin
   fi
   
 # else
