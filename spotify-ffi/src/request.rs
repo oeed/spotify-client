@@ -22,7 +22,7 @@ pub trait RequestResponderWrap {
 impl<T: Request> RequestResponderWrap for RequestResponder<T> {
   async fn request_send(self, spotify: &Spotify) {
     log::debug!("Request: {:?}", &self.command);
-    let response = self.command.request(&spotify).await;
+    let response = self.command.request(&spotify).await.expect("Request failed");
     // we can ignore any errors while sending: https://ryhl.io/blog/actors-with-tokio/
     let _ = self.respond_to.send(response);
   }
@@ -52,5 +52,5 @@ impl<T: Request> RequestResponder<T> {
 pub trait Request: Send + Debug {
   type Response: Send;
 
-  async fn request(self, spotify: &Spotify) -> Self::Response;
+  async fn request(self, spotify: &Spotify) -> Result<Self::Response, crate::Error>;
 }

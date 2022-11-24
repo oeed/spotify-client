@@ -20,5 +20,5 @@ pub enum Commands {
 #[async_trait]
 #[enum_dispatch(Commands)]
 pub trait Command: Send + Debug {
-  async fn execute(self, spotify: &Spotify);
+  async fn execute(self, spotify: &Spotify) -> Result<(), crate::Error>;
 }

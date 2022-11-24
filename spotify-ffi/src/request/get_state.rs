@@ -10,8 +10,8 @@ pub struct GetState;
 impl Request for GetState {
   type Response = u16;
 
-  async fn request(self, spotify: &Spotify) -> Self::Response {
-    0
+  async fn request(self, _spotify: &Spotify) -> Result<Self::Response, crate::Error> {
+    Ok(0)
   }
 }
 

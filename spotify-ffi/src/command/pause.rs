@@ -8,8 +8,9 @@ pub struct Pause;
 
 #[async_trait]
 impl Command for Pause {
-  async fn execute(self, spotify: &Spotify) {
+  async fn execute(self, spotify: &Spotify) -> Result<(), crate::Error> {
     spotify.playback.pause().unwrap();
+    Ok(())
   }
 }
 

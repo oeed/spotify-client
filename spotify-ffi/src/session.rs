@@ -18,7 +18,7 @@ pub struct Session {
   /// as swift-bridge's async runtime does not appear to always be running, or at least when we need it.
   _runtime: Runtime,
   /// As with the runtime, we need to hold on to the handle that's running the background tasks
-  _runner: JoinHandle<()>,
+  _actor: JoinHandle<()>,
 }
 
 impl Session {
@@ -36,7 +36,7 @@ impl Session {
     Session {
       request_sender,
       command_sender,
-      _runner: runtime.spawn(async move {
+      _actor: runtime.spawn(async move {
         Actor::new(&username, &password, request_reciever, command_reciever)
           .await
           .run()

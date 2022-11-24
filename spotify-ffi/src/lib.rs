@@ -8,6 +8,8 @@ mod command;
 mod request;
 mod session;
 
+pub type Error = librespot::core::Error;
+
 #[swift_bridge::bridge]
 mod ffi {
   extern "Rust" {

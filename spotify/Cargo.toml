@@ -1,9 +1,0 @@
-[package]
-edition = "2021"
-name = "spotify"
-version = "0.1.0"
-
-[dependencies]
-librespot = {git = "https://github.com/oeed/librespot", branch = "spirc-load-command"}
-log = "0.4"
-tokio = "1"
