@@ -1,15 +1,15 @@
-use self::get_state::GetState;
+use self::position::Position;
 use crate::actor::Spotify;
 use async_trait::async_trait;
 use enum_dispatch::enum_dispatch;
 use std::fmt::Debug;
 use tokio::sync::oneshot;
 
-mod get_state;
+mod position;
 
 #[enum_dispatch]
 pub enum Requests {
-  PlayAlbum(RequestResponder<GetState>),
+  Position(RequestResponder<Position>),
 }
 
 #[async_trait]

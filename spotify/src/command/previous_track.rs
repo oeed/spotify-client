@@ -4,17 +4,17 @@ use super::Command;
 use async_trait::async_trait;
 
 #[derive(Debug)]
-pub struct Pause;
+pub struct PreviousTrack;
 
 #[async_trait]
-impl Command for Pause {
+impl Command for PreviousTrack {
   async fn execute(self, spotify: &Spotify) -> Result<(), crate::Error> {
-    spotify.playback.pause()
+    spotify.playback.prev()
   }
 }
 
 impl Session {
-  pub fn pause(&self) {
-    self.command(Pause)
+  pub fn previous_track(&self) {
+    self.command(PreviousTrack)
   }
 }

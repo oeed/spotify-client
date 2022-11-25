@@ -35,10 +35,6 @@ struct AlbumView: View {
             .onTapGesture {
                 spotify.session?
                    .playAlbum("spotify:album:79dL7FLiJFOO0EoehUHQBv")
-                
-                Task {
-                    print("state", await spotify.session!.getState())
-                }
             }
             .onHover { over in
                 isHovering = over

@@ -4,17 +4,17 @@ use super::Command;
 use async_trait::async_trait;
 
 #[derive(Debug)]
-pub struct Pause;
+pub struct SetVolume(u16);
 
 #[async_trait]
-impl Command for Pause {
+impl Command for SetVolume {
   async fn execute(self, spotify: &Spotify) -> Result<(), crate::Error> {
-    spotify.playback.pause()
+    spotify.playback.set_volume(self.0)
   }
 }
 
 impl Session {
-  pub fn pause(&self) {
-    self.command(Pause)
+  pub fn set_volume(&self, volume: u16) {
+    self.command(SetVolume(volume))
   }
 }

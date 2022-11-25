@@ -30,6 +30,8 @@ impl Command for PlayAlbum {
       .collect();
 
     spotify.playback.activate()?;
+    spotify.playback.shuffle(false)?;
+    spotify.playback.repeat(false)?;
 
     spotify.playback.load(SpircLoadCommand {
       context_uri: format!("{}", self.album_uri),

@@ -21,9 +21,23 @@ mod ffi {
     #[swift_bridge(rust_name = "play_album")]
     fn playAlbum(&self, album_id: String);
 
+    #[swift_bridge(rust_name = "next_track")]
+    fn nextTrack(&self);
+
     fn pause(&self);
 
-    #[swift_bridge(rust_name = "get_state")]
-    async fn getState(&self) -> u16;
+    fn play(&self);
+
+    #[swift_bridge(rust_name = "previous_track")]
+    fn previousTrack(&self);
+
+    #[swift_bridge(rust_name = "set_track_position")]
+    fn setTrackPosition(&self, milliseconds: u32);
+
+    #[swift_bridge(rust_name = "set_volume")]
+    fn setVolume(&self, volume: u16);
+
+    #[swift_bridge(rust_name = "track_position")]
+    async fn trackPosition(&self) -> u32;
   }
 }

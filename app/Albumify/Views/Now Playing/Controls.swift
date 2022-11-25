@@ -15,7 +15,9 @@ struct Controls: View {
             ControlButton(
                 imageName: "backward.fill",
                 isPrimary: false,
-                action: {}
+                action: {
+                    spotify.session?.previousTrack()
+                }
             )
             
             ControlButton(
@@ -29,7 +31,9 @@ struct Controls: View {
             ControlButton(
                 imageName: "forward.fill",
                 isPrimary: false,
-                action: {}
+                action: {
+                    spotify.session?.nextTrack()
+                }
             )
         }
     }
