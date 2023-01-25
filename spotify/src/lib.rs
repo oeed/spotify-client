@@ -10,8 +10,11 @@ mod session;
 
 pub type Error = librespot::core::Error;
 
+use self::request::library_albums::{LibraryAlbum, LibraryArtist};
+
 #[swift_bridge::bridge]
 mod ffi {
+
   extern "Rust" {
     type Session;
 
@@ -39,5 +42,17 @@ mod ffi {
 
     #[swift_bridge(rust_name = "track_position")]
     async fn trackPosition(&self) -> u32;
+
+    #[swift_bridge(rust_name = "library_albums")]
+    async fn libraryAlbums(&self) -> LibraryAlbum;
+  }
+
+  // TODO: swift-bridge doesn't allow non-opaque types from being in Vec, change to struct types once possible
+  // TODO: once swift-bridge lets us declare ffi in multiple files, move the following
+  extern "Rust" {
+    type LibraryAlbum;
+    // type LibraryArtist;
+
+    fn uri(&self) -> String;
   }
 }

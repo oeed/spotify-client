@@ -15,7 +15,7 @@ crate-type = ["staticlib"]
 async-trait = "0.1"
 enum_dispatch = "0.3"
 futures = "0.3"
-librespot = {git = "https://github.com/oeed/librespot", branch = "event-broadcast"}
+librespot = {git = "https://github.com/oeed/librespot", branch = "graphql-client"}
 log = "0.4"
 simple_logger = "4.0.0"
 swift-bridge = {version = "0.1", features = ["async"]}

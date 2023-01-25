@@ -1,15 +1,16 @@
-use self::position::Position;
 use crate::actor::Spotify;
 use async_trait::async_trait;
 use enum_dispatch::enum_dispatch;
 use std::fmt::Debug;
 use tokio::sync::oneshot;
 
+pub mod library_albums;
 mod position;
 
 #[enum_dispatch]
 pub enum Requests {
-  Position(RequestResponder<Position>),
+  Position(RequestResponder<position::Position>),
+  LibraryAlbums(RequestResponder<library_albums::LibraryAlbums>),
 }
 
 #[async_trait]
